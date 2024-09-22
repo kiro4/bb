@@ -18,6 +18,12 @@ class PostController extends Controller
         return view("posts.index" ,compact("posts"));
     }
     public function show(){
-        return view('posts.show');
+        $post= [
+            'id'=>1 , 'title'=>"php", 'created_at'=>"2024-9-22 3:41 PM", 'created_by'=>"kiro", 'desc'=>"there is some desc" , 'email'=>"kiro@gmail.com"
+        ];
+
+
+
+        return view('posts.show' , compact("post"));
     }
 }
