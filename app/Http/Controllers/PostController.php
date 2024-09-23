@@ -2,37 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     //
-    public function index (){
-
-        $posts= [
-            ['id'=>1 , 'title'=>"php", 'created_at'=>"2024-9-22 3:41 PM", 'created_by'=>"kiro"],
-            ['id'=>2 , 'title'=>"html", 'created_at'=>"2024-9-22 1:42 PM", 'created_by'=>"ahmed"],
-            ['id'=>3 , 'title'=>"js", 'created_at'=>"2024-9-22 2:43 PM", 'created_by'=>"Mohammed"],
-        ];
-
+    public function index ()
+    {
+        $posts = Post::all();
         return view("posts.index" ,compact("posts"));
     }
-    public function show(){
-        $post= [
-            'id'=>1 , 'title'=>"php", 'created_at'=>"2024-9-22 3:41 PM", 'created_by'=>"kiro", 'desc'=>"there is some desc" , 'email'=>"kiro@gmail.com"
-        ];
+
+
+    public function show(Post $post){
+
 
         return view('posts.show' , compact("post"));
     }
+
+
     public function create(){
 
         return view("posts.create");
     }
+
+    
     public function store(){
 
-        $data =$_POST;
-        return $data;
-        // return to_route("posts.index");
+        $data =Request()->all();
+
+        return to_route("posts.index");
 
 }
+
+    public function edit(){
+
+        return view ("posts.edit");
+    }
+    public function update(){
+
+        $title =request()->title;
+        $desc =request()->desc;
+        $post_creator =request()->post_creator;
+        // dd($title, $desc, $post_creator);
+
+        return to_route("posts.show",1);
+
+    }
+    public function destroy(){
+        return to_route("posts.index");
+    }
 }
