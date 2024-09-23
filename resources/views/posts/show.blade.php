@@ -2,7 +2,7 @@
 @section('title') Show Page @endsection
 @section('contant')
 
-<div class="container m-5">
+
 
 <div class="card">
     <div class="card">
@@ -21,7 +21,7 @@
       <p class="card-text">Created At : {{$post['created_at']}}</p>
     </div>
   </div>
-</div>
+
 
 
 

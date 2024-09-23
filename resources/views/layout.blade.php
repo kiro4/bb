@@ -14,16 +14,17 @@
     <a class="navbar-brand" href="{{url('/')}}">Blog</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link " aria-current="page" href="{{url('posts/post')}}">Home</a>
+        <a class="nav-link " aria-current="page" href="{{route('posts.index')}}">Home</a>
       </div>
     </div>
   </div>
 </nav>
+<div class="container mt-5">
 
 @yield("contant")
 
 
-
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 

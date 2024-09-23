@@ -22,8 +22,17 @@ class PostController extends Controller
             'id'=>1 , 'title'=>"php", 'created_at'=>"2024-9-22 3:41 PM", 'created_by'=>"kiro", 'desc'=>"there is some desc" , 'email'=>"kiro@gmail.com"
         ];
 
-
-
         return view('posts.show' , compact("post"));
     }
+    public function create(){
+
+        return view("posts.create");
+    }
+    public function store(){
+
+        $data =$_POST;
+        return $data;
+        // return to_route("posts.index");
+
+}
 }
