@@ -9,18 +9,21 @@
     @method("PUT")
 
 <label class="form-label" for="">Title</label>
-<input class="form-control" type="text" name="title" id="">  <br>
+<input class="form-control" type="text" value="{{$post->name}}"  name="title" id="">  <br>
 
 <label class="form-label" for="">Dscription</label>
-<textarea  name ="desc" class="form-control mb-3"  rows="3"></textarea>
+<textarea  name ="desc" class="form-control mb-3" value="{{$post->desc}}"  rows="3"></textarea>
 
 <label class="form-label" for="">Post Creator</label>
 
 <select class="form-control "  name="post_creator" id="">
+@foreach ($Users as $User)
+ <option value="{{$User->id}}">{{$User->name}}</option>
 
-    <option value="1">ahmed</option>
-    <option value="2">kiro</option>
+@endforeach
+
 </select>
+
 <button class="btn btn-primary mt-4" type="submit">Update</button>
 </form>
 

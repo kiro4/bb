@@ -17,9 +17,11 @@
 <label class="form-label" for="">Post Creator</label>
 
 <select class="form-control "  name="post_creator" id="">
+@foreach ($Users as $User)
+ <option value="{{$User->id}}">{{$User->name}}</option>
 
-    <option value="1">ahmed</option>
-    <option value="2">kiro</option>
+@endforeach
+
 </select>
 <button class="btn btn-success mt-4" type="submit">Submit</button>
 </form>
