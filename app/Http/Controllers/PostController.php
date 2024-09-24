@@ -17,10 +17,11 @@ class PostController extends Controller
 
 
     public function show(Post $post){
+
         $Users = User::all();
+//$sPost= Post::findOrFail($postId);
 
-
-        return view('posts.show' , compact("post","Users"));
+        return view('posts.show' , compact('post','Users' ));
     }
 
 
@@ -34,16 +35,22 @@ class PostController extends Controller
 
     public function store(){
 
-        $data =Request()->all();
+//        $data =Request()->all();
 
         $title =request()->title;
         $desc =request()->desc;
         $post_creator =request()->post_creator;
 
-        $post = new Post;
-        $post->title =$title;
-        $post->desc =$desc;
-        $post->save();
+//        $post = new Post;
+//        $post->title =$title;
+//        $post->desc =$desc;
+//        $post_creator->post_creator=$post_creator;
+//        $post->save();
+        Post::create([
+            'title'=>$title,
+            'desc'=>$desc,
+            'user_id'=>$post_creator
+        ]);
 
         return to_route("posts.index");
 
@@ -61,12 +68,24 @@ class PostController extends Controller
         $title =request()->title;
         $desc =request()->desc;
         $post_creator =request()->post_creator;
-        // dd($title, $desc, $post_creator);
+//         dd($title, $desc, $post_creator);
 
-        return to_route("posts.show",1);
+    $post -> update([
+        'title'=>$title,
+        'desc'=>$desc,]);
+
+
+//        $post = Post::find($post);
+//
+//        $post->title = $title;
+//        $post->desc = $desc;
+//
+//        $post->save();
+        return view("posts.show",compact("post"));
 
     }
-    public function destroy(){
-        return to_route("posts.index");
+    public function destroy(Post $post){
+        $post->delete();
+        return to_route("posts.index",compact ('post'));
     }
 }

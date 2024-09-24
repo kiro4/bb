@@ -4,15 +4,15 @@
 
 
 
-<form action="{{route("posts.update",1)}}" method="POST">
+<form action="{{route('posts.update',$post['id'])}}" method="POST">
     @csrf
     @method("PUT")
 
 <label class="form-label" for="">Title</label>
-<input class="form-control" type="text" value="{{$post->name}}"  name="title" id="">  <br>
+<input class="form-control" type="text" value="{{$post->title}}"  name="title" id="">  <br>
 
 <label class="form-label" for="">Dscription</label>
-<textarea  name ="desc" class="form-control mb-3" value="{{$post->desc}}"  rows="3"></textarea>
+<textarea  name ="desc" class="form-control mb-3"  rows="3">{{$post->desc}}</textarea>
 
 <label class="form-label" for="">Post Creator</label>
 
